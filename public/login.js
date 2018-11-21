@@ -1,5 +1,5 @@
 firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
+  if (role == teacher ) {
     // User is signed in.
 
     document.getElementById("user_div").style.display = "block";
