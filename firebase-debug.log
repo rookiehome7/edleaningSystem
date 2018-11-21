@@ -15,3 +15,15 @@
 [debug] [2018-11-21T06:51:36.965Z] <<< HTTP RESPONSE 200
 [debug] [2018-11-21T06:51:36.977Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/edlearning-2ce39:testIamPermissions  
 
+[debug] [2018-11-21T06:51:38.984Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-21T06:51:38.986Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/edlearning-2ce39  
+ 
+[debug] [2018-11-21T06:51:40.431Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\rooki\edlearning\edleaningSystem'...
+[info] 
+[debug] [2018-11-21T06:51:40.437Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/608280412878/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-21T06:51:41.200Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
