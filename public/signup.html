@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>ED Learning System</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+  <script src="FirebaseFile.js"></script>
+</head>
+
+<body>
+  <!-- Start your project here-->
+  <div style="height: 100vh">
+    <div class="flex-center flex-column">
+        <div class="card">
+        <h5 class="card-header info-color white-text text-center py-4">
+          <strong>Sign up</strong>
+        </h5>
+        <!--Card content-->
+        <div class="card-body px-lg-5 pt-0">
+            <!-- E-mail -->
+          <div class="md-form">
+              <input type="email" id="email_field" class="form-control" required>
+              <label for="email_field">E-mail</label>
+          </div>
+            <!-- Password -->
+          <div class="md-form">
+              <input type="password" id="password_field" class="form-control" >
+              <label for="password_field">Password</label>
+          </div>
+          <!-- First name -->
+          <div class="md-form">
+              <input type="text" id="firstname_field" class="form-control">
+              <label for="firstname_field">First name</label>
+          </div>
+          <!-- Last name -->
+          <div class="md-form">
+              <input type="email" id="lastname_field" class="form-control">
+              <label for="lastname_field">Last name</label>
+          </div>
+          <!-- User role -->
+            <!-- Group of material radios - option 1 -->
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="role_field" name="role_field" value="Teacher" >
+              <label class="form-check-label" for="role_field1">Teacher</label>
+            </div>
+
+            <!-- Group of material radios - option 2 -->
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="role_field" name="role_field" value="Student" >
+              <label class="form-check-label" for="role_field2">Student</label>
+            </div>
+          <!-- Sign up button -->
+          <button onclick="signUp()" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" >Register now</button>
+          <!-- login button -->
+          <button onclick="window.location='login.html'" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" >Login now!</button>
+        </div>
+        </div>
+    </div>
+  </div>
+
+  
+  <script src="signup.js"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>

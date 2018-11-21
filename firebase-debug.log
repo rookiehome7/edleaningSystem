@@ -1,0 +1,17 @@
+[debug] [2018-11-21T06:51:36.322Z] ----------------------------------------------------------------------
+[debug] [2018-11-21T06:51:36.325Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\rooki\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2018-11-21T06:51:36.325Z] CLI Version:   6.1.0
+[debug] [2018-11-21T06:51:36.325Z] Platform:      win32
+[debug] [2018-11-21T06:51:36.325Z] Node Version:  v10.13.0
+[debug] [2018-11-21T06:51:36.326Z] Time:          Wed Nov 21 2018 13:51:36 GMT+0700 (Indochina Time)
+[debug] [2018-11-21T06:51:36.326Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-21T06:51:36.336Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-21T06:51:36.337Z] > authorizing via signed-in user
+[debug] [2018-11-21T06:51:36.337Z] [iam] checking project edlearning-2ce39 for permissions ["firebase.projects.get"]
+[debug] [2018-11-21T06:51:36.339Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-11-21T06:51:36.339Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2018-11-21T06:51:36.965Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-21T06:51:36.977Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/edlearning-2ce39:testIamPermissions  
+
