@@ -1,25 +1,40 @@
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-
-    document.getElementById("user_div").style.display = "block";
-    document.getElementById("login_div").style.display = "none";
-
     var user = firebase.auth().currentUser;
+    firebase.database().ref('/users/'+user.uid+'/role').once('value', (snapshot) => {
+      if (snapshot.val() == "Teacher"){
+        document.getElementById("user_div_teacher").style.display = "block";
+        document.getElementById("user_div_student").style.display = "none";
+        //alert("Teacher");
+      }
+      else if (snapshot.val() == "Student") {
+        document.getElementById("user_div_teacher").style.display = "none";
+        document.getElementById("user_div_student").style.display = "block";
+        //alert("Student");
+      }
+      else {
+        alert(snapshot.exists() ? snapshot.val() : "no user role");
+      }
+      //alert(snapshot.exists() ? snapshot.val() : "no user role");
+    }, (error) => {
+      if(error) {
+      }
+    });
 
     if(user != null){
-
       var email_id = user.email;
-      document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
-
+      document.getElementById("user_para").innerHTML = "Hello, " + email_id;
+      document.getElementById("user_para1").innerHTML = "Hello, " + email_id;
     }
-
-  } else {
-    // No user is signed in.=
-    document.getElementById("user_div").style.display = "none";
-    document.getElementById("login_div").style.display = "block";
+  } 
+  else {
+    window.location = "login.html";
   }
 });
+
+
+
 
 function login(){
   var userEmail = document.getElementById("email_field").value;

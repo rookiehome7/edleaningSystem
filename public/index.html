@@ -1,7 +1,3 @@
-<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-<script src="FirebaseFile.js"></script>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,59 +14,87 @@
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet"> 
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+  <script src="FirebaseFile.js"></script>
 </head>
 
 <body>
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-    <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">ED Learning</a>
-    <!-- Collapse button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="basicExampleNav">
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Quiz</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Session</a>
-        </li>
-      </ul>
-      <!-- Links -->
-    </div>
-    <!-- Collapsible content -->
-  </nav>
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="#">ED Learning</a>
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+         <!--  <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Quiz</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Session</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" onclick="logout()">Logout</a>
+          </li>
+        </ul>
+        <!-- Links -->
+      </div>
+      <!-- Collapsible content -->
+    </nav>
   <!--/.Navbar-->
 
   <!-- Start your project here-->
    <div style="height: 100vh">
     <div class="flex-center flex-column">
-      <div id="login_div" class="main-div">
-          <h5 class="card-header info-color white-text text-center py-4">
-              <strong>You not login!! </strong>
-          </h5>
-            <button onclick="window.location='login.html'" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" >Login now!</button>
+      <div id="user_div_teacher" class="loggedin-div">
+          <h3>Welcome Teacher</h3>
+          <br>
+          <div class="container">
+            <div class="jumbotron blue lighten-5 z-depth-2">
+              <h2 class="card-header-title mb-3" align="center" id="user_para">Hello, </h2>
+              <div class="card-body">
+              <button type="button" class="btn btn-lg btn-block danger-color">Create a session now!</button>
+              <br>
+              <button type="button" class="btn btn-lg btn-block info-color">View Session history</button>
+              <br>
+              <button type="button" class="btn btn-lg btn-block info-color">View Score history</button>
+              </div>
+            </div>
+          </div>  
       </div>
-      <div id="user_div" class="loggedin-div">
-          <h3>Welcome User</h3>
-          <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
-          <button onclick="logout()" class="btn btn-info btn-block my-4">Logout</button>
+      <div id="user_div_student" class="loggedin-div">
+        <h3>Welcome Student</h3>
+        <br>
+        <div class="container">
+            <div class="jumbotron blue lighten-5 z-depth-2">
+              <h2 class="card-header-title mb-3" align="center" id="user_para1">Hello, </h2>
+              <div class="card-body">
+                <input class="form-control form-control-lg text-center elegant-color-dark white-text" type="text" placeholder="GAME PIN" required><br>
+                <button type="button" class="btn btn-lg btn-block danger-color">Join now!</button>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
-  </div> 
+  </div>
+
+  <script >
+    document.getElementById("user_div_teacher").style.display = "none";
+    document.getElementById("user_div_student").style.display = "none";
+  </script>
   <script src="index.js"></script>
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
