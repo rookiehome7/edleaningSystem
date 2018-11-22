@@ -20,9 +20,9 @@
 
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark primary-color sticky-top z-depth-1">
+    <nav class="navbar navbar-expand-lg navbar-dark blue lighten-1 sticky-top z-depth-0">
       <!-- Navbar brand -->
-      <a class="navbar-brand" href="#">ED Learning</a>
+      <a class="navbar-brand" href="index.html">ED Learning</a>
       <!-- Collapse button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
         aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,20 +32,15 @@
       <div class="collapse navbar-collapse" id="basicExampleNav">
         <!-- Links -->
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
           <!-- Navbar for teacher -->
           <div id="nav_div_teacher" class="loggedin-div">
             <li class="nav-item">
-              <a class="nav-link" href="#">Quiz</a>
+              <a class="nav-link" href="quiz.html">Quiz</a>
             </li> 
           </div>
           <div id="nav_div_teacher1" class="loggedin-div">
             <li class="nav-item">
-              <a class="nav-link" href="#">Session</a>
+              <a class="nav-link" href="session.html">Session</a>
             </li> 
           </div>
           <div id="nav_div_teacher2" class="loggedin-div">
@@ -72,30 +67,26 @@
       </div>
       <!-- Collapsible content -->
     </nav>
-  <!--/.Navbar-->
-
-  <!-- Start your project here-->
-   <div >
-    <div class="flex-center primary-color"  style="height: 100vh">
-      <div id="user_div_teacher" class="loggedin-div">
-          <br>
-          <div class="container">
-            <div class="jumbotron blue lighten-5 z-depth-1">
-              
-              <div class="card-body">
-              <button type="button" class="btn btn-lg btn-block danger-color">Create a session now!</button>
-              <br>
-              <button type="button" class="btn btn-lg btn-block info-color">View Session history</button>
-              <br>
-              <button type="button" class="btn btn-lg btn-block info-color">View Score history</button>
-              </div>
-            </div>
-          </div>  
-      </div>
-
-      <div id="user_div_student" class="loggedin-div">
+    <!--/.Navbar-->
+    <!-- Teacher role -->
+    <div class="flex-center " id="user_div_teacher" class="loggedin-div" style="height: 100vh">
+       
+      <div class="container">
         <br>
+        <div class="text-center">
+            <button type="button" class="btn btn-lg btn-primary btn-rounded" onclick="gotocreatequiz()">Create Quiz</button>
+            <button type="button" class="btn btn-lg btn-default btn-rounded">Create session</button>
+            <button type="button" class="btn btn-lg btn-secondary btn-rounded">View Session history</button>
+            <button type="button" class="btn btn-lg btn-success btn-rounded">View Score history</button>
+            <br>
+        </div>
+      </div>   
+    </div>
+    <!-- Student role -->
+    <div class="flex-center primary-color" id="user_div_student" class="loggedin-div" style="height: 100vh">      
+        
         <div class="container">
+            <br>
             <div class="jumbotron white lighten-0 z-depth-1">
             <h1 class="display-4 text-center" >Play now!</h1>
               <div class="card-body">
@@ -103,29 +94,23 @@
                 <button type="button" class="btn btn-lg btn-block danger-color">Join now!</button>
               </div>
             </div>
-          </div>
-      </div>
+        </div>
     </div>
-  </div>
-  <!-- Footer -->
-    <footer class="page-footer font-small primary-color">
-
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2018 Copyright:
-        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-      </div>
-      <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
-
 
 
   <script >
     document.getElementById("user_div_teacher").style.display = "none";
     document.getElementById("user_div_student").style.display = "none";
+    // For nav bar 
+    document.getElementById("nav_div_teacher").style.display = "none";
+    document.getElementById("nav_div_teacher1").style.display = "none";
+    document.getElementById("nav_div_teacher2").style.display = "none";
+    document.getElementById("nav_div_student").style.display = "none";
+    document.getElementById("nav_div_student").style.display = "none";
+    document.getElementById("user_name").style.display = "none";
   </script>
-  <script src="index.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/linkpage.js"></script>
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
   <!-- Bootstrap tooltips -->

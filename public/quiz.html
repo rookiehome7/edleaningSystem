@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>ED Learning System</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet"> 
+  <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+  <script src="FirebaseFile.js"></script>
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark blue lighten-1 sticky-top z-depth-0">
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="index.html">ED Learning</a>
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <!-- Navbar for teacher -->
+          <div id="nav_div_teacher" class="loggedin-div">
+            <li class="nav-item active">
+              <a class="nav-link" href="quiz.html">Quiz<span class="sr-only">(current)</span></a>
+            </li> 
+          </div>
+          <div id="nav_div_teacher1" class="loggedin-div">
+            <li class="nav-item">
+              <a class="nav-link" href="session.html">Session</a>
+            </li> 
+          </div>
+          <div id="nav_div_teacher2" class="loggedin-div">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Report</a>
+            </li> 
+          </div>
+        </ul>
+        <ul class="navbar-nav">
+          <span class="navbar-text white-text">
+              <a id="user_name">Hello, </a>
+          </span>
+          <li class="nav-item">
+              <a class="nav-link" onclick="logout()">Logout</a>
+          </li>
+        </ul>
+        <!-- Links -->
+      </div>
+      <!-- Collapsible content -->
+    </nav>
+  <!--/.Navbar-->
+
+    <div class="flex-center " id="user_div_teacher" class="loggedin-div" style="height: 100vh">
+        <!-- Teacher role -->
+      <div class="container">
+
+        <br>
+         <div class="text-center">
+            <button type="button" class="btn btn-lg btn-primary btn-rounded" onclick="gotocreatequiz()">Create Quiz</button>
+             <br>
+        </div>
+        <!-- News jumbotron -->
+        <div class="jumbotron text-center hoverable p-1">
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 offset-md-1 mx-3 my-3">
+              <!-- Featured image -->
+              <div class="view overlay">
+                <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-7 text-md-left ml-3 mt-3">
+
+              <!-- Excerpt -->
+              <a href="#!" class="green-text">
+                <h6 class="h6 pb-1"><i class="fa fa-desktop pr-1"></i> Quiz</h6>
+              </a>
+
+              <h4 class="h4 mb-4">This is title of the news</h4>
+
+              <p class="font-weight-normal">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque, totam</p>
+              <p class="font-weight-normal">Create in 19/08/2016</p>
+
+              <a class="btn btn-success">Read more</a>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+        <div class="jumbotron text-center hoverable p-1">
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 offset-md-1 mx-3 my-3">
+              <!-- Featured image -->
+              <div class="view overlay">
+                <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-7 text-md-left ml-3 mt-3">
+
+              <!-- Excerpt -->
+              <a href="#!" class="green-text">
+                <h6 class="h6 pb-1"><i class="fa fa-desktop pr-1"></i> Quiz</h6>
+              </a>
+
+              <h4 class="h4 mb-4">This is title of the news</h4>
+
+              <p class="font-weight-normal">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque, totam</p>
+              <p class="font-weight-normal">Create in 19/08/2016</p>
+
+              <a class="btn btn-success">Read more</a>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+        <div class="jumbotron text-center hoverable p-1">
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 offset-md-1 mx-3 my-3">
+              <!-- Featured image -->
+              <div class="view overlay">
+                <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-7 text-md-left ml-3 mt-3">
+
+              <!-- Excerpt -->
+              <a href="#!" class="green-text">
+                <h6 class="h6 pb-1"><i class="fa fa-desktop pr-1"></i> Quiz</h6>
+              </a>
+
+              <h4 class="h4 mb-4">This is title of the news</h4>
+
+              <p class="font-weight-normal">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque, totam</p>
+              <p class="font-weight-normal">Create in 19/08/2016</p>
+
+              <a class="btn btn-success">Read more</a>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+        <div class="jumbotron text-center hoverable p-1">
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 offset-md-1 mx-3 my-3">
+              <!-- Featured image -->
+              <div class="view overlay">
+                <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-7 text-md-left ml-3 mt-3">
+
+              <!-- Excerpt -->
+              <a href="#!" class="green-text">
+                <h6 class="h6 pb-1"><i class="fa fa-desktop pr-1"></i> Quiz</h6>
+              </a>
+
+              <h4 class="h4 mb-4">This is title of the news</h4>
+
+              <p class="font-weight-normal">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque, totam</p>
+              <p class="font-weight-normal">Create in 19/08/2016</p>
+
+              <a class="btn btn-success">Read more</a>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+        <div class="jumbotron text-center hoverable p-1">
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 offset-md-1 mx-3 my-3">
+              <!-- Featured image -->
+              <div class="view overlay">
+                <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-7 text-md-left ml-3 mt-3">
+
+              <!-- Excerpt -->
+              <a href="#!" class="green-text">
+                <h6 class="h6 pb-1"><i class="fa fa-desktop pr-1"></i> Quiz</h6>
+              </a>
+
+              <h4 class="h4 mb-4">This is title of the news</h4>
+
+              <p class="font-weight-normal">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque, totam</p>
+              <p class="font-weight-normal">Create in 19/08/2016</p>
+
+              <a class="btn btn-success">Read more</a>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+        <div class="jumbotron text-center hoverable p-1">
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 offset-md-1 mx-3 my-3">
+              <!-- Featured image -->
+              <div class="view overlay">
+                <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-7 text-md-left ml-3 mt-3">
+
+              <!-- Excerpt -->
+              <a href="#!" class="green-text">
+                <h6 class="h6 pb-1"><i class="fa fa-desktop pr-1"></i> Quiz</h6>
+              </a>
+
+              <h4 class="h4 mb-4">This is title of the news</h4>
+
+              <p class="font-weight-normal">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque, totam</p>
+              <p class="font-weight-normal">Create in 19/08/2016</p>
+
+              <a class="btn btn-success">Read more</a>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+        <!-- News jumbotron -->
+      </div>   
+    </div>
+  <script >
+    document.getElementById("user_div_teacher").style.display = "none";
+  </script>
+  <script src="js/quiz.js"></script>
+   <script src="js/linkpage.js"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+
+
+</html>
