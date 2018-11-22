@@ -20,7 +20,7 @@
 
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color sticky-top z-depth-1">
       <!-- Navbar brand -->
       <a class="navbar-brand" href="#">ED Learning</a>
       <!-- Collapse button -->
@@ -37,17 +37,35 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-         <!--  <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-          </li>
+          <!-- Navbar for teacher -->
+          <div id="nav_div_teacher" class="loggedin-div">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Quiz</a>
+            </li> 
+          </div>
+          <div id="nav_div_teacher1" class="loggedin-div">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Session</a>
+            </li> 
+          </div>
+          <div id="nav_div_teacher2" class="loggedin-div">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Report</a>
+            </li> 
+          </div>
+          <!-- Navbar for Student --> 
+          <div id="nav_div_student" class="loggedin-div">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Join Quiz</a>
+            </li>
+          </div>
+        </ul>
+        <ul class="navbar-nav">
+          <span class="navbar-text white-text">
+              <a id="user_name">Hello, </a>
+          </span>
           <li class="nav-item">
-            <a class="nav-link" href="#">Quiz</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Session</a>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link" onclick="logout()">Logout</a>
+              <a class="nav-link" onclick="logout()">Logout</a>
           </li>
         </ul>
         <!-- Links -->
@@ -57,14 +75,13 @@
   <!--/.Navbar-->
 
   <!-- Start your project here-->
-   <div style="height: 100vh">
-    <div class="flex-center flex-column">
+   <div >
+    <div class="flex-center primary-color"  style="height: 100vh">
       <div id="user_div_teacher" class="loggedin-div">
-          <h3>Welcome Teacher</h3>
           <br>
           <div class="container">
-            <div class="jumbotron blue lighten-5 z-depth-2">
-              <h2 class="card-header-title mb-3" align="center" id="user_para">Hello, </h2>
+            <div class="jumbotron blue lighten-5 z-depth-1">
+              
               <div class="card-body">
               <button type="button" class="btn btn-lg btn-block danger-color">Create a session now!</button>
               <br>
@@ -75,14 +92,14 @@
             </div>
           </div>  
       </div>
+
       <div id="user_div_student" class="loggedin-div">
-        <h3>Welcome Student</h3>
         <br>
         <div class="container">
-            <div class="jumbotron blue lighten-5 z-depth-2">
-              <h2 class="card-header-title mb-3" align="center" id="user_para1">Hello, </h2>
+            <div class="jumbotron white lighten-0 z-depth-1">
+            <h1 class="display-4 text-center" >Play now!</h1>
               <div class="card-body">
-                <input class="form-control form-control-lg text-center elegant-color-dark white-text" type="text" placeholder="GAME PIN" required><br>
+                <input class="form-control form-control-lg text-center elegant-color-dark white-text" type="text" placeholder="QUIZ PIN" required><br>
                 <button type="button" class="btn btn-lg btn-block danger-color">Join now!</button>
               </div>
             </div>
@@ -90,6 +107,19 @@
       </div>
     </div>
   </div>
+  <!-- Footer -->
+    <footer class="page-footer font-small primary-color">
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+
 
   <script >
     document.getElementById("user_div_teacher").style.display = "none";
@@ -105,5 +135,7 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
 </body>
+
+
 
 </html>
