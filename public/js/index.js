@@ -9,22 +9,11 @@ firebase.auth().onAuthStateChanged(function(user) {
       document.getElementById("user_name").innerHTML = "Hello, " + firstname + " " + lastname;
 
       if (snapshot.val().role == "Teacher"){
-        document.getElementById("user_div_teacher").style.display = "block";
-        document.getElementById("user_div_student").style.display = "none";
-
-        document.getElementById("nav_div_teacher").style.display = "block";
-        document.getElementById("nav_div_teacher1").style.display = "block";
-        document.getElementById("nav_div_teacher2").style.display = "block";
-
+        asTeacher();
         //alert("Teacher");
       }
       else if (snapshot.val().role == "Student") {
-        document.getElementById("user_div_teacher").style.display = "none";
-        document.getElementById("user_div_student").style.display = "block";
-
-        document.getElementById("nav_div_teacher").style.display = "none";
-        document.getElementById("nav_div_teacher1").style.display = "none";
-        document.getElementById("nav_div_teacher2").style.display = "none";
+        asStudent(user.uid);
         //alert("Student");
       }
       else {
@@ -39,6 +28,55 @@ firebase.auth().onAuthStateChanged(function(user) {
     window.location = "login.html";
   }
 });
+
+
+function asTeacher(){
+  document.getElementById("user_div_teacher").style.display = "block";
+  document.getElementById("user_div_student").style.display = "none";
+  document.getElementById("nav_div_teacher").style.display = "block";
+  document.getElementById("nav_div_teacher1").style.display = "block";
+  document.getElementById("nav_div_teacher2").style.display = "block";
+  }
+
+
+function asStudent(userid)
+  {
+  document.getElementById("user_div_teacher").style.display = "none";
+  document.getElementById("user_div_student").style.display = "block";
+  document.getElementById("nav_div_teacher").style.display = "none";
+  document.getElementById("nav_div_teacher1").style.display = "none";
+  document.getElementById("nav_div_teacher2").style.display = "none";
+        // initTeacher
+        
+  firebase.database().ref('users/'+userid+'/answer/')
+                      .on('value', (snapshot)=>{
+                        console.log(snapshot.val());
+                                              $('#quizplaystudent').html('Loading...');
+                                              var html = '';
+                                              snapshot.forEach((user_snapshot)=>
+                                                {
+                                                console.log(user_snapshot.val());
+                                                let useranswer = user_snapshot.val();
+                                                firebase.database().ref('quiz/'+ useranswer.quiz).on('value', (quiz_snapshot)=>{
+                                                      quiz = quiz_snapshot.val();
+                                                      html = '<div class="col-md-5">' +
+                                                            '<div class="panel panel-info">' +
+                                                              '<div class="panel-heading">' +
+                                                              '<h3 class="panel-title">' + 'Quiz name:' + quiz.name + '</h3>' +
+                                                              '</div>' +
+                                                              '<div class="panel-body">' +
+                                                              'Score:' + useranswer.score +'/' + useranswer.answer.length   +
+                                                              '<p>Session ID:' + useranswer.session + ' | Play Time:' + datetimeFormat(useranswer.create_time) + '</p><hr>'  +
+                                                              '</div>' +
+                                                            '</div>' +
+
+                                                          '</div>' + html; // prepend the entry because we need to display it in reverse order
+                                                          $('#quizplaystudent').html(html);
+                                                      }); 
+                                                
+                                            });
+                                          });
+}
 
 
 function login(){
@@ -56,4 +94,29 @@ function login(){
 function logout(){
   firebase.auth().signOut();
   window.location = "login.html";
+}
+
+
+
+// For query quiz 
+function datetimeFormat(timestamp) {
+    var dateObj = new Date(timestamp);
+    var en_month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return dateObj.getDate() + ' ' + en_month[dateObj.getMonth()] + ' ' + pad2Digit(dateObj.getFullYear()) + ' ' + pad2Digit(dateObj.getHours()) + ':' + pad2Digit(dateObj.getMinutes());
+}
+function strip(html) {
+    var tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+}
+function excerpt(text, length) {
+    text = strip(text);
+    text = $.trim(text); //trim whitespace
+    if (text.length > length) {
+        text = text.substring(0, length - 3) + '...';
+    }
+    return text;
+}
+function pad2Digit(num) {
+    return ('0' + num.toString()).slice(-2);
 }

@@ -12,7 +12,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log("Test");
         document.getElementById("user_div_teacher").style.display = "block";
         
-        const quizlistUI = document.getElementById("quizName");
+        // const quizlistUI = document.getElementById("quizName");
         // initTeacher
         
         firebase.database().ref('quiz')
