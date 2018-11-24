@@ -13,7 +13,7 @@ function signUp(){
 		role : userRole 
 		}, function(error) {
 			if (error) {
-				alert("Data could not be save."+error);
+				alert("Data could not be saved."+error);
 			} 
 			else {
 				alert("Register Successfully.");
@@ -30,7 +30,7 @@ function signUp(){
   }
   else
   {
-  	window.alert("Please fill all form!!");
+  	window.alert("Please fill all forms!");
   }	
 }
 
