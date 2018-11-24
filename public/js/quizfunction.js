@@ -30,27 +30,28 @@ function myFunction() {
 }
 
 
-function viewquiz(){
-  console.log("Test");
-  var uid = firebase.auth().currentUser.uid
-  const quizlistUI = document.getElementById("quizName");
-  //alert (uid);
-  firebase.database().ref('quiz')
-                      .orderByChild('create_by')
-                      .equalTo(uid)
-                      .on('value', (snapshot)=>{
-                                                snapshot.forEach((quiz_snapshot)=>
-                                                  {
-                                                  console.log(quiz_snapshot.val());
-                                                  let quiz = quiz_snapshot.val();
-                                                  let $li = document.createElement("m1");
-                                                  let $li2 = document.createElement("p");
-                                                  $li.innerHTML = "Quiz name: " + quiz.name;
-                                                  $li2.innerHTML = "Description: " + quiz.description;
-                                                  quizlistUI.append($li);
-                                                  quizlistUI.append($li2);
-                                                  })
-  });
+// function viewquiz(){
+//   //console.log("Test");
+//   var uid = firebase.auth().currentUser.uid
+//   console.log(uid);
+//   const quizlistUI = document.getElementById("quizName");
+//   //alert (uid);
+//   firebase.database().ref('quiz')
+//                       .orderByChild('create_by')
+//                       .equalTo(uid)
+//                       .on('value', (snapshot)=>{
+//                                                 snapshot.forEach((quiz_snapshot)=>
+//                                                   {
+//                                                   console.log(quiz_snapshot.val());
+//                                                   let quiz = quiz_snapshot.val();
+//                                                   let $li = document.createElement("m1");
+//                                                   let $li2 = document.createElement("p");
+//                                                   $li.innerHTML = "Quiz name: " + quiz.name;
+//                                                   $li2.innerHTML = "Description: " + quiz.description;
+//                                                   quizlistUI.append($li);
+//                                                   quizlistUI.append($li2);
+//                                                   })
+//   });
 
 
 
@@ -78,4 +79,3 @@ function viewquiz(){
 
   //                 })
   // });
-}

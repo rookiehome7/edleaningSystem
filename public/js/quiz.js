@@ -12,6 +12,36 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log("Test");
         document.getElementById("user_div_teacher").style.display = "block";
         
+        const quizlistUI = document.getElementById("quizName");
+        // initTeacher
+        
+        firebase.database().ref('quiz')
+                            .orderByChild('create_by')
+                            .equalTo(user.uid)
+                            .on('value', (snapshot)=>{
+                              console.log(snapshot.val());
+                              
+                                                      $('#entries').html('Loading...');
+                                                      var html = '';
+                                                      snapshot.forEach((quiz_snapshot)=>
+                                                        {
+                                                        console.log(quiz_snapshot.val());
+                                                        let quiz = quiz_snapshot.val();
+                                                        html = '<div class="col-md-4">' +
+                                                            '<a href="quiz.html?id=' + quiz.name + '" style="text-decoration:none!important;">' +
+                                                              '<div class="panel panel-info">' +
+                                                                '<div class="panel-heading">' +
+                                                                '<h3 class="panel-title">' + excerpt(quiz.name, 140) + '</h3>' +
+                                                                '</div>' +
+                                                                '<div class="panel-body">' +
+                                                                '<small>By ' + firstname + ' ' + lastname +  ' | ' + datetimeFormat(quiz.create_time) +'</small>' +
+                                                                '<hr><p>' + quiz.description + '</p>' +
+                                                                '</div>' +
+                                                              '</div>' +
+                                                            '</a>' +
+                                                            '</div>' + html; // prepend the entry because we need to display it in reverse order
+                                                        }); $('#entries').html(html);
+                                                    });
         //alert("Teacher");
       }
       else if (snapshot.val().role == "Student") {
@@ -31,6 +61,31 @@ firebase.auth().onAuthStateChanged(function(user) {
     window.location = "login.html";
   }
 });
+
+
+function strip(html) {
+    var tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+}
+function excerpt(text, length) {
+    text = strip(text);
+    text = $.trim(text); //trim whitespace
+    if (text.length > length) {
+        text = text.substring(0, length - 3) + '...';
+    }
+    return text;
+}
+function pad2Digit(num) {
+    return ('0' + num.toString()).slice(-2);
+}
+function datetimeFormat(timestamp) {
+    var dateObj = new Date(timestamp);
+    var en_month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return dateObj.getDate() + ' ' + en_month[dateObj.getMonth()] + ' ' + pad2Digit(dateObj.getFullYear()) + ' ' + pad2Digit(dateObj.getHours()) + ':' + pad2Digit(dateObj.getMinutes());
+}
+
+
 
 function logout(){
   firebase.auth().signOut();
