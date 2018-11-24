@@ -15,7 +15,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.getElementById("nav_div_teacher").style.display = "block";
         document.getElementById("nav_div_teacher1").style.display = "block";
         document.getElementById("nav_div_teacher2").style.display = "block";
-        document.getElementById("nav_div_student").style.display = "none";
+
         //alert("Teacher");
       }
       else if (snapshot.val().role == "Student") {
@@ -25,7 +25,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.getElementById("nav_div_teacher").style.display = "none";
         document.getElementById("nav_div_teacher1").style.display = "none";
         document.getElementById("nav_div_teacher2").style.display = "none";
-        document.getElementById("nav_div_student").style.display = "block";
         //alert("Student");
       }
       else {

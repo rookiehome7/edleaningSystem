@@ -1,10 +1,3 @@
-// var currentLocation = window.location;
-// var c = currentLocation.searchParams.get('id');
-// console.log(c);
-
-
-
-
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
@@ -37,24 +30,24 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 function answerquestion(userid){
-var urlParams = new URLSearchParams(window.location.search);
-var sessionID = urlParams.get('id')
+var sessionID = localStorage.getItem("storageName")
+//alert(sessionID);
 firebase.database().ref('sessions/'+ sessionID).on('value', (sessionsnapshot)=>{
-                            quizkey = sessionsnapshot.val().session_quiz;
-                            firebase.database().ref('quiz/'+quizkey).on('value', (snapshot)=>{
-                            if (snapshot.val() == null){
+                            if (sessionsnapshot.val() == null){
                               alert("Session not found");
                               window.location= 'index.html';
                             }
-                            else{
-                              var questions = snapshot.val().questions;
-                              quizPage(questions,quizkey,userid) ; 
+                            else
+                            {
+                            quizkey = sessionsnapshot.val().session_quiz;
+                            firebase.database().ref('quiz/'+quizkey).on('value', (snapshot)=>{
+                            var questions = snapshot.val().questions;
+                            quizPage(questions,quizkey,userid) ; 
+                            });
                             }
-                          });
+                           
 });
 }
-
-
 
 // เก็บไว้เป็นน reference
 // firebase.database().ref('quiz')
@@ -224,8 +217,7 @@ function quizPage(questions,key,userid){
                                     }
 
                                   function saveScore(score,selections,totalquestion) {
-                                        var urlParams = new URLSearchParams(window.location.search);
-                                        var sessionID = urlParams.get('id');
+                                        var sessionID = localStorage.getItem("storageName")
 
                                         firebase.database().ref('sessions/'+sessionID+'/sub_session').push({
                                             score : score,
@@ -259,8 +251,6 @@ function quizPage(questions,key,userid){
                                        
                                   }
                                   })();
-
-
 }
 
 function logout(){

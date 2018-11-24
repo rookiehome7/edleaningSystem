@@ -8,13 +8,11 @@ firebase.auth().onAuthStateChanged(function(user) {
       document.getElementById("user_name").innerHTML = "Hello, " + firstname + " " + lastname;
 
       if (snapshot.val().role == "Teacher"){
-        document.getElementById("user_div_teacher").style.display = "block";
         //alert("Teacher");
       }
       else if (snapshot.val().role == "Student") {
         alert("Access Denied!!");
         window.location = "index.html";
-        
       }
       else {
         alert(snapshot.exists() ? snapshot.val().role : "no user role");

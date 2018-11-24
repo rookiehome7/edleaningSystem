@@ -15,13 +15,16 @@ function joinQuizSession(){
 
 	if ( sessionid.length == 6 )
 		{
-		console.log(sessionid);
- 		window.location= 'quizanswer.html?id='+sessionid;
+		//console.log(sessionid);
+ 		window.location= 'quizanswer.html';
+ 		// Send session id for  html send 
+ 		localStorage.setItem("storageName",sessionid);
+
+ 		// Get session id for html received
+ 		//alert(localStorage.getItem("storageName"));
 		}
 	else 
 		{
 		alert("Invalid session pin. Please enter 6 digit.");
 		} 
-
-
 }
