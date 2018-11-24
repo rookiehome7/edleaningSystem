@@ -74,10 +74,10 @@
       <div class="container">
         <br>
         <div class="text-center">
-            <button type="button" class="btn btn-lg btn-primary btn-rounded" onclick="gotocreatequiz()">Create Quiz</button>
-            <button type="button" class="btn btn-lg btn-default btn-rounded">Create session</button>
+            <button type="button" class="btn btn-lg btn-primary btn-rounded" onclick="gotoquz()">Quiz</button>
+            <button type="button" class="btn btn-lg btn-default btn-rounded" onclick="session()">Session</button>
             <button type="button" class="btn btn-lg btn-secondary btn-rounded">View Session history</button>
-            <button type="button" class="btn btn-lg btn-success btn-rounded">View Score history</button>
+            <button type="button" disable class="btn btn-lg btn-success btn-rounded">View Score history</button>
             <br>
         </div>
       </div>   
@@ -90,8 +90,8 @@
             <div class="jumbotron white lighten-0 z-depth-1">
             <h1 class="display-4 text-center" >Play now!</h1>
               <div class="card-body">
-                <input class="form-control form-control-lg text-center elegant-color-dark white-text" type="text" placeholder="QUIZ PIN" required><br>
-                <button type="button" class="btn btn-lg btn-block danger-color">Join now!</button>
+                <input class="form-control" id="sessionid_field" type="number" placeholder="QUIZ PIN" ><br>
+                <button type="button" class="btn btn-lg btn-block danger-color"  onclick="joinQuizSession()">  Join now!</button>
               </div>
             </div>
         </div>

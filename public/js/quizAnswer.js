@@ -1,3 +1,10 @@
+// var currentLocation = window.location;
+// var c = currentLocation.searchParams.get('id');
+// console.log(c);
+
+
+
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
@@ -14,9 +21,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         //alert("Teacher");
       }
       else if (snapshot.val().role == "Student") {
-        answerquestion();
-
-        
+        answerquestion(user.uid);
       }
       else {
         alert(snapshot.exists() ? snapshot.val().role : "no user role");
@@ -31,41 +36,51 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-function answerquestion(){
+function answerquestion(userid){
+var urlParams = new URLSearchParams(window.location.search);
+var sessionID = urlParams.get('id')
+firebase.database().ref('sessions/'+ sessionID).on('value', (sessionsnapshot)=>{
+                            quizkey = sessionsnapshot.val().session_quiz;
+                            firebase.database().ref('quiz/'+quizkey).on('value', (snapshot)=>{
+                            if (snapshot.val() == null){
+                              alert("Session not found");
+                              window.location= 'index.html';
+                            }
+                            else{
+                              var questions = snapshot.val().questions;
+                              quizPage(questions,quizkey,userid) ; 
+                            }
+                          });
+});
+}
 
-firebase.database().ref('quiz')
-                          .orderByChild('session')
-                          .equalTo("000000")
-                          .on('value', (snapshot)=>{
-                            snapshot.forEach((quiz_snapshot)=>
-                                  {
-                                  console.log(quiz_snapshot.val());
-                                  var questions = quiz_snapshot.val().questions;
-                                  console.log(questions);
-                                  
-                                   (function() {
-                                    // var questions = [{
-                                    //   question: "What is 2*5?",
-                                    //   choices: [2, 5, 10, 15, 20],
-                                    //   correctAnswer: 2
-                                    // }, {
-                                    //   question: "What is 3*6?",
-                                    //   choices: [3, 6, 9, 12, 18],
-                                    //   correctAnswer: 4
-                                    // }, {
-                                    //   question: "What is 8*9?",
-                                    //   choices: [72, 99, 108, 134, 156],
-                                    //   correctAnswer: 0
-                                    // }, {
-                                    //   question: "What is 1*7?",
-                                    //   choices: [4, 5, 6, 7, 8],
-                                    //   correctAnswer: 3
-                                    // }, {
-                                    //   question: "What is 8*8?",
-                                    //   choices: [20, 30, 40, 50, 64],
-                                    //   correctAnswer: 4
-                                    // }];
-                                    
+
+
+// เก็บไว้เป็นน reference
+// firebase.database().ref('quiz')
+//                           .orderByChild('session/pin')
+//                           .equalTo(urlParams.get('id'))
+//                           .on('value', (snapshot)=>{
+//                             if (snapshot.val() == null){
+//                               alert("Session not found");
+//                               window.location= 'index.html';
+                              
+//                             }
+//                             else{
+//                               var key = Object.keys(snapshot.val())[0]; // Get key
+//                               //console.log(key);
+//                               snapshot.forEach((quiz_snapshot)=>
+//                                   {
+//                                   console.log(quiz_snapshot.val());
+//                                   var questions = quiz_snapshot.val().questions;
+//                                   quizPage(questions,key,userid) ; 
+//                                   });
+//                             }
+//                           });
+
+function quizPage(questions,key,userid){
+ //console.log("userID:"+userid+ " Quizkey:"+ key);
+  (function() {
                                     var questionCounter = 0; //Tracks question number
                                     var selections = []; //Array containing user choices
                                     var quiz = $('#quiz'); //Quiz div object
@@ -204,25 +219,49 @@ firebase.database().ref('quiz')
                                           numCorrect++;
                                         }
                                       }
-                                      
-                                      score.append('You got ' + numCorrect + ' questions out of ' +
-                                                   questions.length + ' right!!!');
+                                      saveScore(numCorrect,selections,questions.length);
                                       return score;
                                     }
-                                  })(); 
 
+                                  function saveScore(score,selections,totalquestion) {
+                                        var urlParams = new URLSearchParams(window.location.search);
+                                        var sessionID = urlParams.get('id');
 
-
-
-                                  });
-                          });
-
+                                        firebase.database().ref('sessions/'+sessionID+'/sub_session').push({
+                                            score : score,
+                                            answer : selections,
+                                            answer_by : userid,
+                                            create_time : Date.now()
+                                            }, function(error) {
+                                              if (error) {
+                                                alert("Error quiz not score."+error+" Please try again");
+                                                window.location = "quizanswer.html?id="+sessionID;
+                                              } 
+                                              else {
+                                               firebase.database().ref('users/'+userid+'/answer').push({
+                                                  quiz : key,
+                                                  session : sessionID,
+                                                  score : score,
+                                                  answer : selections,
+                                                  create_time : Date.now()
+                                                  }, function(error) {
+                                                    if (error) {
+                                                      alert("Data could not be save."+error);
+                                                    } 
+                                                    else {
+                                                      alert('You got ' + score + ' questions out of ' + totalquestion + ' right!!!');
+                                                      window.location = "index.html"
+                                                    }
+                                              });
+                                                  
+                                              }
+                                        });
+                                       
+                                  }
+                                  })();
 
 
 }
-
-
-
 
 function logout(){
   firebase.auth().signOut();

@@ -1,0 +1,25 @@
+[debug] [2018-11-24T16:48:39.287Z] ----------------------------------------------------------------------
+[debug] [2018-11-24T16:48:39.289Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\rooki\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2018-11-24T16:48:39.290Z] CLI Version:   6.1.0
+[debug] [2018-11-24T16:48:39.290Z] Platform:      win32
+[debug] [2018-11-24T16:48:39.290Z] Node Version:  v10.13.0
+[debug] [2018-11-24T16:48:39.290Z] Time:          Sat Nov 24 2018 23:48:39 GMT+0700 (Indochina Time)
+[debug] [2018-11-24T16:48:39.290Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-11-24T16:48:39.301Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-11-24T16:48:39.302Z] > authorizing via signed-in user
+[debug] [2018-11-24T16:48:39.302Z] [iam] checking project edlearning-2ce39 for permissions ["firebase.projects.get"]
+[debug] [2018-11-24T16:48:39.304Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/edlearning-2ce39:testIamPermissions  
+
+[debug] [2018-11-24T16:48:40.603Z] <<< HTTP RESPONSE 200
+[debug] [2018-11-24T16:48:40.605Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/edlearning-2ce39  
+ 
+[debug] [2018-11-24T16:48:41.881Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\rooki\edlearning\edleaningSystem'...
+[info] 
+[debug] [2018-11-24T16:48:41.885Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/608280412878/clients/_:getWebAppConfig  
+ 
+[debug] [2018-11-24T16:48:42.576Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] +  hosting: Local server: http://localhost:5000
