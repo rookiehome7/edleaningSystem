@@ -6,20 +6,27 @@ function savequiz(){
   var quizdescription = document.getElementById("description_field").value;
   var now = Date.now();
 
-  firebase.database().ref('quiz').push({
-    name : quizname,
-    description : quizdescription,
-    create_time : now,
-    create_by : uid
-    }, function(error) {
-      if (error) {
-        alert("Data could not be save."+error);
-      } 
-      else {
-        alert("Create quiz Successfully.");
-        //setTimeout("location.href = 'login.html';",2000);
-      }
-    });
+    if (quizname)
+    {
+
+    firebase.database().ref('quiz').push({
+      name : quizname,
+      description : quizdescription,
+      create_time : now,
+      create_by : uid
+      }, function(error) {
+        if (error) {
+          alert("Data could not be save."+error);
+        } 
+        else {
+          alert("Create quiz Successfully.");
+          //setTimeout("location.href = 'login.html';",2000);
+        }
+      });
+    }
+  else {
+    window.alert("Quiz Title is required.");
+  }
 }
 
 function myFunction() {

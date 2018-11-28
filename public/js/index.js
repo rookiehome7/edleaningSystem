@@ -35,7 +35,7 @@ function asTeacher(){
   document.getElementById("user_div_student").style.display = "none";
   document.getElementById("nav_div_teacher").style.display = "block";
   document.getElementById("nav_div_teacher1").style.display = "block";
-  document.getElementById("nav_div_teacher2").style.display = "block";
+
   }
 
 
@@ -45,7 +45,7 @@ function asStudent(userid)
   document.getElementById("user_div_student").style.display = "block";
   document.getElementById("nav_div_teacher").style.display = "none";
   document.getElementById("nav_div_teacher1").style.display = "none";
-  document.getElementById("nav_div_teacher2").style.display = "none";
+
         // initTeacher
         
   firebase.database().ref('users/'+userid+'/answer/')
