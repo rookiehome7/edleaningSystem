@@ -16,7 +16,7 @@ function joinQuizSession(){
 	if ( sessionid.length == 6 )
 		{
 		//console.log(sessionid);
- 		window.location= 'quizanswer.html';
+ 		window.location= 'quizAnswer.html';
  		// Send session id for  html send 
  		localStorage.setItem("storageName",sessionid);
 
